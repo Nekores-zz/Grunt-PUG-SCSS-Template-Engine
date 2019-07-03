@@ -1,0 +1,28 @@
+{
+  "name": "unishop-template",
+  "version": "1.2.0",
+  "description": "Unishop - Universal Bootstrap 4 E-Commerce Template",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "rokaux.com",
+  "license": "ISC",
+  "homepage": "themes.rokaux.com/unishop/v1.1",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-autoprefixer": "^3.0.4",
+    "grunt-browser-sync": "^2.2.0",
+    "grunt-cache-pug-compile": "^4.0.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-pug": "^1.0.0",
+    "grunt-contrib-uglify": "^4.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-sass": "^2.0.0",
+    "pug": "^2.0.0-rc.4",
+    "pug-inheritance": "^3.0.0-beta.1"
+  },
+  "dependencies": {
+    "lozad": "^1.9.0"
+  }
+}

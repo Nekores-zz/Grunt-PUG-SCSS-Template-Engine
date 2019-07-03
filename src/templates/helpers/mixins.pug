@@ -1,0 +1,151 @@
+//- Top Level Menu Item
+mixin menu-link(url, title)
+  - var linkattr = isNestedFile ? {'href': '../' + url} : {'href': url}
+  a()&attributes(linkattr)
+    span= title
+
+//- Sub Menu Item
+mixin submenu-item(url, title, extraClass)
+  - var linkAttr = isNestedFile ? {'href': '../' + url} : {'href': url}
+  - var activeClass = (menuTitle === title) ? 'active' : ''
+  li()&attributes({'class': [extraClass, activeClass]})
+    a()&attributes(linkAttr)= title
+
+//- Sub Menu Item Components    
+mixin submenu-component-item(url, title)
+  - var linkAttr = isNestedFile ? {'href': '../components/' + url} : {'href': 'components/' + url}
+  - var activeClass = (pageTitle === title) ? 'active' : ''
+  li()&attributes({'class': activeClass})
+    a()&attributes(linkAttr)= title
+
+//- Mega Menu Links
+mixin megamenu-links(items)
+  ul.sub-menu
+    each item in items
+      - var linkAttr = isNestedFile ? {'href': '../components/' + item.link} : {'href': 'components/' +  item.link}
+      - var activeClass = (pageTitle === item.title) ? 'active' : ''
+      li()&attributes({'class': activeClass})
+        a()&attributes(linkAttr)= item.title
+
+//- Image
+mixin image(link, alt)
+  - var imgAttrs1 = isNestedFile ? {'src': '../' + link, 'alt': alt} : {'src': link, 'alt': alt}
+  img()&attributes(imgAttrs1)
+
+//- Rating Stars
+mixin rating-stars(stars)
+  .rating-stars
+    each star in stars
+      - var starClass = {'class': star.class}
+      i()&attributes(starClass)
+
+//- Social Buttons
+mixin social-buttons(socials, shape, skin)
+  each social in socials
+    - var linkAttrs = {'href': social.link, 'class': ['social-button',  'sb-' + social.icon, 'shape-' + shape, 'sb-' + skin], 'target': '_blank'}
+    a()&attributes(linkAttrs)
+      i()&attributes({'class': ['socicon-' + social.icon]})
+
+//- Side Menu
+mixin side-menu(items, isActive)
+  nav#components-list.list-group
+    each item in items
+      - var activeClass = (isActive === item.title) ? 'active' : ''
+      - var linkAttrs = {'href': item.link, 'data-filter-item': item.data, 'class': ['list-group-item', 'list-group-item-action', activeClass]}
+      a()&attributes(linkAttrs)= item.title
+
+//- Drop Down Menu
+mixin _dropDownlist(itemsArray ,isClass)
+  div(class="_dropDownlist "+isClass)
+    svg(xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100px")
+      block
+      ul
+        each item, i in  itemsArray
+          li
+            a(href=item.link class=item.isActive) #{item.name}
+          if(item.slash)
+            li
+              span #{item.slash}
+//- Buttons
+mixin _BtnPrimaryIcon(text,link, icon)
+    button._BtnPrimaryIcon.btn&attributes(attributes)
+      span(class="fa fa-"+icon)
+      a(href=link) #{text}
+mixin _BtnPrimary(text,link)
+  button._BtnPrimary.btn&attributes(attributes)
+    a(href=link) #{text}
+
+//- Inputs
+mixin _InputPrimary(placeholder,text, value, iconLabel)
+  ._InputPrimary&attributes(attributes)
+    label #{text}
+      if(iconLabel)
+        span.iconLabel.pull-left(class="fa fa-"+iconLabel)
+      Input._InputPrimary(placeholder=placeholder value=value).form-control
+      if block
+        block
+
+mixin _SelectPrimary(label, itemsArray)
+  ._SelectPrimary&attributes(attributes)
+    label #{label}
+      select.form-control
+        each item, i in  itemsArray
+          option(value=item.optionText selected=item.isSelected) #{item.optionText}
+
+
+
+//- Titles
+mixin _TitleBar1(title, tag, warning, tableBullets)
+  ._TitleBar1
+    ul.nav
+      if(tag)
+        li.nav-item
+          span #{tag}
+      if(warning)
+        li.nav-item
+          span.clr-warning(class="fa fa-"+warning)
+      if(title)
+        li.nav-item.m-auto
+          h3.text-center #{title}
+      if(tableBullets)
+        li.nav-item.m-auto.pull-right._tableBullets
+          h3.text-center #{tableBullets}
+
+
+
+//- Menu
+mixin _menu1(itemsArray)
+  ul(class="nav nav-fill topMenuStyle")
+      each item, i in  itemsArray
+          li(class="nav-item")
+              a.nav-link(href=item.link class=item.isActive) #{item.name}
+
+//- Table
+
+mixin _table1(height)
+  // ==========> Table Code Start
+  table.table.table-bordered&attributes(attributes)(style="height :"+ height)
+    if block
+      block
+  // <========= Table Code End
+
+
+
+//- Cards
+mixin _camcard1(className, leftIcon,title, rightIcon, img)
+  div(class="_camcard1 "+className)
+    if(title)
+      div(class="_camcard1_header")
+        ul
+          li
+            li
+              a(href="#")
+                span(class="fa fa-"+leftIcon)
+            li
+              a(href="#")= title
+            if(className=="dangercam")
+              li
+                a(href="#")
+                  span(class="fa fa-"+rightIcon)
+    img(src=img)
+      

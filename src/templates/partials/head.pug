@@ -1,0 +1,27 @@
+//- Include config.pug file that holds all variables
+block config
+  include ../helpers/config
+
+//- Mixins - reusable code snippets
+include ../helpers/mixins
+
+head
+  meta(charset="utf-8")
+  title
+    block title
+      | #{pageTitle}
+
+  // SEO Meta Tags
+  meta(name="description", content="")
+  meta(name="keywords", content="")
+  meta(name="author", content="")
+
+  // Mobile Specific Meta Tag
+  meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
+
+ 
+  // Vendor Styles including: Bootstrap, Font Icons, Plugins, etc.
+  link(rel="stylesheet", media="screen")&attributes(isNestedFile ? {'href': '../css/vendor.min.css'} : {'href': 'css/vendor.min.css'})
+  
+  // Main Template Styles
+  link(id='mainStyles', rel="stylesheet", media="screen")&attributes(isNestedFile ? {'href': '../css/styles.min.css'} : {'href': 'css/styles.min.css'})

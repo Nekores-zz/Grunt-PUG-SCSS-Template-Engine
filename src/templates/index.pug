@@ -1,0 +1,39 @@
+extends partials/layout
+
+//- Page Content
+block content
+    if isDemo
+        section
+            .container
+                .row
+                    .col
+                        // Header
+                        br
+                        include components/Header.pug
+                        // Jumborton
+                        br
+                        include ./components/Jumborton.pug
+        section.mt-5.mb-5
+            .container
+                .row
+                    .col
+                        include ./components/Card.pug
+                    .col.mb-5
+                        include ./components/Card.pug
+                    .col.mb-5
+                        include ./components/Card.pug
+                    .col.mb-5
+                        include ./components/Card.pug
+                    .col.mb-5
+                        include ./components/Card.pug
+                    .col.mb-5
+                        include ./components/Card.pug
+    else
+        section.mt-5.mb-5
+            .container
+                .row
+                    .col
+                        .alert.alert-success(role='alert')
+                            | Congratulations! &mdash; You got it, the engineering behind this codebase, Have Fun!!
+        
+                    

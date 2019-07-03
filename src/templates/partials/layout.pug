@@ -1,0 +1,13 @@
+doctype html
+html(lang="en")
+
+  //- head.pug template
+  include head 
+  
+  // Body
+  body
+    // Page Content
+    block content
+    // JavaScript (jQuery) libraries, plugins and custom scripts
+    script()&attributes(isNestedFile ? {'src': '../js/vendor.min.js'} : {'src': 'js/vendor.min.js'})
+    script()&attributes(isNestedFile ? {'src': '../js/scripts.min.js'} : {'src': 'js/scripts.min.js'})
